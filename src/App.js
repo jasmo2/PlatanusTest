@@ -3,21 +3,43 @@ import logo from './logo.svg';
 import WebSockets from './utils/websockets';
 
 import './App.css';
-function validData(data){
-  let validData = true;
-  // debugger
-  for (let el of data) {
-    if (el === 'hb') {
-      validData = false;
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      bid: 'BID',
+      priceDiferences: '0',
+      bid_size: 'BID_SIZE',
+      ask: 'ASK',
+      ask_size: 'ASK_SIZE',
     }
   }
-  if (validData){
-    
+  validData(data){
+    let validData = true;
+    // debugger
+    for (let el of data) {
+      if (el === 'hb') {
+        validData = false;
+      }
+    }
+    if (validData){
+      // data[0] // ignore
+      // data[1] = BID  // float Price of last highest bid
+      // data[2] = BID_SIZE // float Size of the last highest bid
+      // data[3] = ASK // float Price of last lowest ask
+      // data[4] = ASK_SIZE // float Size of the last lowest ask
+      // data[5] // ignore
+      console.log('DataValid');
+      console.log(`bid: ${data[1]} ask: ${data[3]}`);
+      this.setState({
+        bid: `${data[1]}`,
+        ask: `${data[3]}`
+      });
+
+    }
   }
-}
-class App extends Component {
   componentWillMount() {
-    WebSockets((response) => validData(response));
+    WebSockets((response) => this.validData.bind(this)(response));
   }
   render() {
     return (
@@ -27,7 +49,13 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          BID = {this.state.bid}
+        </p>
+        <p className="App-intro">
+          ASK {this.state.ask}
+        </p>
+        <p className="App-intro">
+          Diferencia entre Precios:
         </p>
       </div>
     );
