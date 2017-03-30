@@ -29,10 +29,7 @@ class App extends Component {
       // data[3] = ASK // float Price of last lowest ask
       // data[4] = ASK_SIZE // float Size of the last lowest ask
       // data[5] // ignore
-      console.log('DataValid');
-      // console.log(`bid: ${data[1]} ask: ${data[3]}`);
       let lastFiveArr = this.state.last_five_arr;
-      console.log(`lastFiveArr.lenght: ${lastFiveArr.length}`)
       if (lastFiveArr.length === 5) {
         lastFiveArr.shift();
       }
@@ -77,7 +74,7 @@ class App extends Component {
         </p>
         <hr/>
         <p className="App-intro">
-          Últimos 5 arreglos: <br/>
+          <h3>Últimos 5 arreglos: </h3><br/>
           {this.state.last_five_arr.join(`\n`)}
         </p>
       </div>
