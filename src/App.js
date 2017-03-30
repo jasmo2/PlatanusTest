@@ -63,10 +63,13 @@ class App extends Component {
         </p>
         <hr/>
           <p className="App-intro">
-            Dispuestas a Comprar = {this.state.bid_size}
+            Dispuestos a Vender = {this.state.ask_size}
           </p>
           <p className="App-intro">
-            Dispuestos a vender = {this.state.ask_size}
+            Dispuestos a Comprar = {this.state.bid_size}
+          </p>
+          <p className="App-intro">
+            Diferencia: {this.state.bid_size - this.state.ask_size}
           </p>
         <hr/>
         <p className="App-intro">
