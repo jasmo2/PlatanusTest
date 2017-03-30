@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import WebSockets from './utils/websockets';
 
+import './App.css';
 class App extends Component {
+  componentWillMount() {
+    WebSockets();
+  }
   render() {
     return (
       <div className="App">
