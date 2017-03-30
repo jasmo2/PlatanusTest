@@ -32,8 +32,11 @@ class App extends Component {
       console.log('DataValid');
       console.log(`bid: ${data[1]} ask: ${data[3]}`);
       this.setState({
-        bid: `${data[1]}`,
-        ask: `${data[3]}`
+        ask: data[3],
+        ask_size: data[4],
+        bid: data[1],
+        bid_size: data[2],
+        priceDiferences: (data[1] - data[3]) //(La diferencia entre BID y ASK.)
       });
 
     }
@@ -54,6 +57,18 @@ class App extends Component {
         <p className="App-intro">
           ASK {this.state.ask}
         </p>
+        <hr/>
+          <p className="App-intro">
+            Dispuestas a Comprar = {this.state.bid_size}
+          </p>
+          <p className="App-intro">
+            Dispuestos a vender {this.state.ask_size}
+          </p>
+        <hr/>
+        <p className="App-intro">
+          Diferencia entre Precios: {this.state.priceDiferences}
+        </p>
+        <hr/>
         <p className="App-intro">
           Diferencia entre Precios:
         </p>
