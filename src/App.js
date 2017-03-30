@@ -75,7 +75,11 @@ class App extends Component {
         <hr/>
         <p className="App-intro">
           <h3>Últimos 5 arreglos: </h3><br/>
-          {this.state.last_five_arr.join(`\n`)}
+          {this.state.last_five_arr.map((el)=>{
+            return (
+              <p><small>{el}</small></p>
+            )
+          })}
         </p>
       </div>
     );
