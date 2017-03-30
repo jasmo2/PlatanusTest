@@ -15,7 +15,10 @@ const WebSockets = (callback) => {
 
 
   w.onmessage = (response) => {
-   console.log(response);
+    console.log(response);
+    if (response.data !== '{"event":"info","version":1.1}') {
+      callback(JSON.parse(response.data));
+    }
   }
 
 }

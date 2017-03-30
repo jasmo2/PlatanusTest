@@ -3,9 +3,21 @@ import logo from './logo.svg';
 import WebSockets from './utils/websockets';
 
 import './App.css';
+function validData(data){
+  let validData = true;
+  // debugger
+  for (let el of data) {
+    if (el === 'hb') {
+      validData = false;
+    }
+  }
+  if (validData){
+    
+  }
+}
 class App extends Component {
   componentWillMount() {
-    WebSockets();
+    WebSockets((response) => validData(response));
   }
   render() {
     return (
